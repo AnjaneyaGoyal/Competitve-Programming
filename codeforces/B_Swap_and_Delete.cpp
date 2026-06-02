@@ -5,24 +5,32 @@ using namespace std;
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+
     int t;
-    cin>>t;
+    cin >> t;
     while(t--){
         string s;
-        cin>>s;
-        int n= s.length();
-        int z=0,o=0;
-        for(int i=0;i<n;i++){
-            if(s[i]=='0'){
-                z++;
-            }else{
-                o++;
+        cin >> s;
+        int z = 0, o = 0;
+        for(char c : s){
+            if(c == '0') z++;
+            else o++;
+        }
+        int len = 0;
+        for(char c : s){
+            if(c == '0'){
+                if(o > 0){
+                    o--;
+                    len++;
+                } else break;
+            } else {
+                if(z > 0){
+                    z--;
+                    len++;
+                } else break;
             }
         }
-        if(z==o){
-            cout<<"0"<<"\n";
-        }else{
-            cout<<abs(z-o)<<"\n";
-        }
+
+        cout << s.size() - len << "\n";
     }
 }
