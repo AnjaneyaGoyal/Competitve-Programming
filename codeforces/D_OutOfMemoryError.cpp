@@ -30,8 +30,7 @@ int main() {
             ll c;
             cin >> b >> c;
             b--;
-
-            // If this index wasn't updated after last reset
+            
             if (last_update[b] < last_reset) {
                 cur[b] = orig[b];
             }
